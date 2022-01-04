@@ -37,6 +37,19 @@ public class ArticleController {
     @PostMapping("/article")
     ResponseEntity<Article> addArticle(@RequestBody ArticleDto articleDto) {
 
+        int availableReviewers = authorService.getAllAuthors().size();
+
+        log.info("Available reviewers: {}", availableReviewers);
+
+        int articleAuthors = articleDto.getAuthors().size();
+
+        log.info("Authors in article: {}", articleAuthors);
+
+        if (availableReviewers - 3 < articleAuthors) {
+            log.info("Not enough reviewers");
+            return ResponseEntity.badRequest().build();
+        }
+
         for (Author author : articleDto.getAuthors()) {
             authorService.addAuthor(author);
         }
