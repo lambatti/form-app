@@ -25,4 +25,8 @@ public class AuthorService {
     public Optional<Author> getAuthorById(int id) {
         return authorRepository.findById(id);
     }
+
+    public void deleteAuthorById(int id) {
+        authorRepository.deleteById(id);
+    }
 }
