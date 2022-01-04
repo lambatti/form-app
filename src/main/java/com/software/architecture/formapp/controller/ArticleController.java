@@ -8,10 +8,10 @@ import com.software.architecture.formapp.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +22,17 @@ public class ArticleController {
     private final ArticleService articleService;
 
     private final AuthorService authorService;
+
+    @GetMapping("/articles")
+    ResponseEntity<List<Article>> getAllArticles() {
+        return ResponseEntity.ok(articleService.getAllArticles());
+    }
+
+    @GetMapping("/article/{id}")
+    ResponseEntity<Optional<Article>> getArticleByid(@PathVariable int id) {
+        return ResponseEntity.ok(articleService.getArticleById(id));
+    }
+
 
     @PostMapping("/article")
     ResponseEntity<Article> addArticle(@RequestBody ArticleDto articleDto) {
