@@ -1,7 +1,6 @@
 package com.software.architecture.formapp.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,11 +9,16 @@ import java.util.List;
 @Table(name = "articles")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int articleId;
+
+    private String title;
 
     private String content;
 
@@ -26,7 +30,7 @@ public class Article {
     )
     private List<Author> authors;
 
-    @ManyToMany
-    private List<Author> reviewers;
+    //@ManyToMany
+    //private List<Author> reviewers;
 
 }
