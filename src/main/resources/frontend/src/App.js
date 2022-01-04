@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect} from "react";
+import axios from "axios";
+import FormMain from "./FormMain";
+import Table from "./Table";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    useEffect(() => {
+        axios.get('/api/test').then(resp => console.log(resp))
+    })
+
+
+    return (
+        <div className="w-100 h-100">
+            <h1 className="h1 text-center p-3">Dodaj swoją pracę</h1>
+            <div className="bg-primary bg-gradient">
+                <FormMain/>
+
+            </div>
+            <div className="bg-success bg-gradient p-3">
+                <Table/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
