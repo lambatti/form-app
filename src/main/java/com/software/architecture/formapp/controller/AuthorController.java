@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -15,7 +18,17 @@ public class AuthorController {
 
     private final AuthorService authorService;
 
-    @PostMapping("/authors")
+    @GetMapping("/authors")
+    ResponseEntity<List<Author>> getAllAuthors() {
+        return ResponseEntity.ok(authorService.getAllAuthors());
+    }
+
+    @GetMapping("/author/{id}")
+    ResponseEntity<Optional<Author>> getAuthorById(@PathVariable int id) {
+        return ResponseEntity.ok(authorService.getAuthorById(id));
+    }
+
+    @PostMapping("/author")
     ResponseEntity<Author> addAuthor(@RequestBody Author author) {
         Author a = authorService.addAuthor(author);
         return ResponseEntity.ok(a);
