@@ -33,6 +33,7 @@ public class ArticleController {
         Article tempAuthor = Article.builder()
                 .title(articleDto.getTitle())
                 .content(articleDto.getContent())
+                .affiliation(articleDto.getAffiliation())
                 .authors(articleDto.getAuthors())
                 .build();
 

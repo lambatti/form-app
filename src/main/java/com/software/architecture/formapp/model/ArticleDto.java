@@ -13,6 +13,7 @@ public class ArticleDto {
 
     private String title;
     private String content;
+    private String affiliation;
     private List<Author> authors;
 
 }

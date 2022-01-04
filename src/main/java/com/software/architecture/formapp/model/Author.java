@@ -19,14 +19,10 @@ public class Author {
     private String firstName;
     private String lastName;
     private String email;
-    private String affiliation;
 
     @ManyToMany
-    @JoinTable(
-            name="articles_authors",
-            joinColumns = @JoinColumn(name="author_id"),
-            inverseJoinColumns = @JoinColumn(name="article_id")
-
-    )
+    @JoinTable(name = "articles_authors",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id"))
     private List<Article> articles;
 }

@@ -19,15 +19,13 @@ public class Article {
     private int articleId;
 
     private String title;
-
     private String content;
+    private String affiliation;
 
     @ManyToMany
-    @JoinTable(
-            name = "articles_authors",
+    @JoinTable(name = "articles_authors",
             joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id")
-    )
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
     //@ManyToMany
