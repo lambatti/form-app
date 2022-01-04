@@ -16,12 +16,13 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int articleId;
 
+    private String content;
+
     @ManyToMany
     @JoinTable(
-            name="articles_authors",
-            joinColumns = @JoinColumn(name="article_id"),
-            inverseJoinColumns = @JoinColumn(name="author_id")
-
+            name = "articles_authors",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
     )
     private List<Author> authors;
 
