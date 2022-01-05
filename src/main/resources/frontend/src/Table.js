@@ -20,7 +20,7 @@ const Table = () => {
     }]);
 
     useEffect(() => {
-        axios.get('/api/article').then(resp => setData(resp.data))
+        axios.get('/api/articles').then(resp => setData(resp.data))
     }, [])
 
 

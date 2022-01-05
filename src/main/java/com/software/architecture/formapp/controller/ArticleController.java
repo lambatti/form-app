@@ -19,6 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @Slf4j
+@CrossOrigin
 public class ArticleController {
 
     private final ArticleService articleService;

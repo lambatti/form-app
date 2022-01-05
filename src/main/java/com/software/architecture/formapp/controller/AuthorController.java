@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @Slf4j
+@CrossOrigin
 public class AuthorController {
 
     private final AuthorService authorService;
