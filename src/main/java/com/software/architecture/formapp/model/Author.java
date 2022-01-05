@@ -25,4 +25,10 @@ public class Author {
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "article_id"))
     private List<Article> articles;
+
+    @ManyToMany
+    @JoinTable(name = "articles_reviewers",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id"))
+    private List<Article> reviewers;
 }

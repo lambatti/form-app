@@ -28,7 +28,10 @@ public class Article {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
-    //@ManyToMany
-    //private List<Author> reviewers;
+    @ManyToMany
+    @JoinTable(name = "articles_reviewers",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> reviewers;
 
 }
