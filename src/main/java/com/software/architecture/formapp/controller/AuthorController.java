@@ -1,6 +1,7 @@
 package com.software.architecture.formapp.controller;
 
 import com.software.architecture.formapp.model.Author;
+import com.software.architecture.formapp.model.AuthorDto;
 import com.software.architecture.formapp.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +30,13 @@ public class AuthorController {
     }
 
     @PostMapping("/author")
-    ResponseEntity<Author> addAuthor(@RequestBody Author author) {
-        Author a = authorService.addAuthor(author);
+    ResponseEntity<Author> addAuthor(@RequestBody AuthorDto authorDto) {
+        Author a = Author.builder()
+                .firstName(authorDto.getFirstName())
+                .lastName(authorDto.getLastName())
+                .email(authorDto.getEmail())
+                .build();
+        authorService.addAuthor(a);
         return ResponseEntity.ok(a);
     }
 
