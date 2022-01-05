@@ -6,17 +6,17 @@ import axios from "axios";
 const FormMain = () => {
 
     const [title, setTitle] = useState('');
-    const [afiliation, setAfiliation] = useState('');
+    const [affiliation, setAffiliation] = useState('');
     const [content, setContent] = useState('');
 
     const [errmsg ,setErrmsg] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({title, afiliation, content, authors})
+        console.log({title, affiliation, content, authors})
         axios.post('/api/article', {
             title,
-            afiliation,
+            affiliation,
             content,
             authors
         }).catch(() => setErrmsg(`Nie można wykonać dodania do bazy danych`));
@@ -32,8 +32,8 @@ const FormMain = () => {
                 <input className="form-control" name={"title"} value={title}
                        onChange={(e) => setTitle(e.target.value)}/>
                 <label className="form-label">Afiliacja</label>
-                <input className="form-control" name={afiliation} value={afiliation}
-                       onChange={(e) => setAfiliation(e.target.value)}/>
+                <input className="form-control" name={affiliation} value={affiliation}
+                       onChange={(e) => setAffiliation(e.target.value)}/>
                 <label className="form-label">Artykuł</label>
                 <textarea className="form-control" name={"content"} value={content}
                           onChange={(e) => setContent(e.target.value)}/>

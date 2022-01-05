@@ -6,11 +6,16 @@ const Table = () => {
 
     const [data, setData] = useState([{
         title: "Nowy",
-        afiliation: 'SGGW',
+        affiliation: 'SGGW',
         authors: [{firstName: "Adam", lastName: "Tomaszewski", email: "email@wp.pl"}, {
             firstName: "Kamil",
             lastName: "Najlepszy",
             email: "siemka@wp.pl"
+        }],
+        reviewers: [{firstName: "Adam", lastName: "Tomaszewski", email: "email@wp.pl"}, {
+            firstName: "Adam",
+            lastName: "Tomaszewski",
+            email: "email@wp.pl"
         }]
     }]);
 
@@ -25,21 +30,26 @@ const Table = () => {
             <table className="table table-bordered">
                 <thead className="table-info">
                 <tr>
-                    <th>Id</th>
                     <th>Tytuł</th>
+                    <th>Afiliacja</th>
                     <th>Autorzy</th>
                     <th>Kontakt</th>
+                    <th>Recenzenci</th>
                 </tr>
                 </thead>
                 <tbody className="table-dark">
                 {data.map((v) => <tr>
                     <td>{v.title}</td>
-                    <td>{v.afiliation}</td>
+                    <td>{v.affiliation}</td>
                     <td>
                         <ul>{v.authors.map(x => <li>{`${x.firstName} ${x.lastName}`}</li>)}</ul>
                     </td>
-                    <td><ul>{v.authors.map(x => <li>{x.email}</li>)}</ul></td>
+                    <td>
+                        <ul>{v.authors.map(x => <li>{x.email}</li>)}</ul>
+                    </td>
+                    <td><ul>{v.reviewers.map(x => <li>{`${x.firstName} ${x.lastName}`}</li>)}</ul></td>
                 </tr>)}
+
                 </tbody>
             </table>
         </>
