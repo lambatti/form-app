@@ -70,4 +70,8 @@ public class ArticleService {
     public Optional<Article> getArticleById(int id) {
         return articleRepository.findById(id);
     }
+
+    public void deleteAllArticles() {
+        articleRepository.deleteAll();
+    }
 }

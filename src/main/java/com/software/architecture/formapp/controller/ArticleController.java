@@ -99,7 +99,12 @@ public class ArticleController {
 
         Article a = articleService.addArticle(tempArticle);
         return ResponseEntity.ok().build();
+    }
 
+    @DeleteMapping("/articles")
+    ResponseEntity<?> deleteAllArticles() {
+        articleService.deleteAllArticles();
+        return ResponseEntity.noContent().build();
     }
 
 }
