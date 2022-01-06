@@ -87,6 +87,8 @@ public class ArticleController {
             existingAuthors.remove(randomIndex);
         }
 
+
+        log.info("Authors: {}", authorsList);
         log.info("Reviewers: {}", reviewersList);
 
         Article tempArticle = Article.builder()

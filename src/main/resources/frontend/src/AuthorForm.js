@@ -10,7 +10,7 @@ const AuthorForm = ({firstName, lastName, email, onChanged}) => (
         <label className="form-label">Nazwisko</label>
         <input className="form-control" value={lastName} name={"lastName"} onChange={(e) => onChanged(firstName, e.target.value, null)}/>
         <label className="form-label">Email</label>
-        <input className="form-control" value={email} name={"name"} onChange={(e) => onChanged(firstName, lastName, e.target.value)}/>
+        <input className="form-control" value={email} name={"email"} onChange={(e) => onChanged(firstName, lastName, e.target.value)}/>
     </form>
 
     </>

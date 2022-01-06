@@ -21,7 +21,7 @@ const Table = () => {
 
     useEffect(() => {
         axios.get('/api/articles').then(resp => setData(resp.data))
-    }, [])
+    })
 
 
     return (

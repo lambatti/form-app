@@ -13,20 +13,29 @@ const FormMain = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({title, affiliation, content, authors})
+
         axios.post('/api/article', {
             title,
             affiliation,
             content,
             authors
-        }).catch(() => setErrmsg(`Nie można wykonać dodania do bazy danych`));
+        }).then(resp => {
+            console.log("Resp status: " + resp.status);
+            if(resp.status === 200){
+                setAuthors([{firstName: '', lastName: '', email: ''}])
+                setErrmsg("");
+            }
+        }).catch(err => {
+            setErrmsg(`Nie można wykonać dodania do bazy danych`);
+            setAuthors([{firstName: '', lastName: '', email: ''}])
+        })
     }
 
     const [authors, setAuthors] = useState([{firstName: '', lastName: '', email: ''}])
 
     return (
         <>
-            <h2 className="text-danger">{errmsg !== '' ? errmsg : null}</h2>
+            {errmsg !== '' ? <h2 className="text-danger">{errmsg}</h2> : ''}
             <form className="col-6 m-3" onSubmit={handleSubmit}>
                 <label className="form-label">Tytuł</label>
                 <input className="form-control" name={"title"} value={title}
@@ -39,17 +48,16 @@ const FormMain = () => {
                           onChange={(e) => setContent(e.target.value)}/>
 
                 {authors.map((x, i) => (<AuthorForm onChanged={(firstName, lastName, email) => {
+                    console.log({firstName, lastName, email});
                     setAuthors([
                         ...authors.filter((x, n) => n < i),
                         {firstName: firstName, lastName: lastName, email: email},
                         ...authors.filter((x, n) => n > i)
                     ]);
                 }} key={i} {...x} />))}
-                <button className="btn bg-warning m-2" onClick={() => setAuthors([...authors, {email: '', firstName: '', lastName: ''}])}>+</button>
                 <button className="btn btn-outline-warning text-warning float-end" type={"submit"}>Wyślij</button>
             </form>
-
-
+            <button className="btn bg-warning m-2" onClick={() => setAuthors([...authors, {email: '', firstName: '', lastName: ''}])}>+</button>
         </>
 
     )
