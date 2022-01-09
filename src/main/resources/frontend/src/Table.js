@@ -26,7 +26,7 @@ const Table = () => {
 
     return (
         <>
-            <h3>Tabela artykułów</h3>
+            <h3 className="display-6">Tabela artykułów</h3>
             <table className="table table-bordered">
                 <thead className="table-info">
                 <tr>
@@ -37,7 +37,7 @@ const Table = () => {
                     <th>Recenzenci</th>
                 </tr>
                 </thead>
-                <tbody className="table-dark">
+                <tbody className="table-light">
                 {data.map((v) => <tr>
                     <td>{v.title}</td>
                     <td>{v.affiliation}</td>

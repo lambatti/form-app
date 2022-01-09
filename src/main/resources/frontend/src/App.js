@@ -12,13 +12,12 @@ const App = () => {
 
 
     return (
-        <div className="w-100 h-100">
-            <h1 className="h1 text-center p-3">Dodaj swoją pracę</h1>
-            <div className="bg-primary bg-gradient">
+        <div className="">
+            <h1 className="text-center p-3 display-6">Dodaj swoją pracę</h1>
+            <div className="">
                 <FormMain/>
-
             </div>
-            <div className="bg-success bg-gradient p-3">
+            <div className="p-3">
                 <Table/>
             </div>
         </div>
